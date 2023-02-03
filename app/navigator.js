@@ -20,6 +20,14 @@ function NavigatorFunc() {
 
         <Stack.Screen name="SceltaCaccia"
           options={{
+            title: 'Scegli il tuo destino',
+            headerStyle: {
+              backgroundColor: '#ecd7b8',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
             headerShown: true,
             animation: 'flip',
             presentation: 'modal',
