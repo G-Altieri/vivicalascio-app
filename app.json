@@ -1,5 +1,6 @@
 {
   "expo": {
+    
     "name": "vivicalascio-app",
     "slug": "vivicalascio-app",
     "version": "1.0.0",
@@ -18,16 +19,30 @@
       "**/*"
     ],
     "ios": {
+      "userInterfaceStyle": "light",
       "supportsTablet": true
     },
     "android": {
+      "userInterfaceStyle": "light",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.bronz.vivicalascioapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b71ed7ac-e1f2-4779-8218-3197c3d0910e"
+      }
+    },
+    "plugins": [
+      [
+        "./plugins/withDisableForcedDarkModeAndroid.js",
+        {}
+      ]
+    ]
   }
 }
