@@ -6,6 +6,7 @@ import { NativeBaseProvider, Box, Button, Center, Image } from "native-base";
 
 const imageBgSrc = require('../../assets/bg_carta.jpg');
 const imagePercorsoSrc = require('../../assets/imgPercorso.png');
+const imageCastelloSrc = require('../../assets/castello.png');
 const win = Dimensions.get('window');
 
 const WidthImagePercorso = 1408;
@@ -17,16 +18,27 @@ export default class HomeScreen extends React.Component {
   state = {
 
   }
+  
+  changeScreenSceltaCaccia = () => this.props.navigation.navigate('SceltaCacciaScreen')
+
 
   render() {
     return (
       <ImageBackground source={imageBgSrc} resizeMode="cover" style={styles.imageBg}>
-        <View style={{ flex: 1 / 2, alignItems: 'center', justifyContent: 'flex-end' }}>
+        <Box style={styles.BarHome}>
+          <Image style={styles.imageCastello} source={imageCastelloSrc}
+            alt="Alternate Text"
+          />
+        <Text style={styles.BarHomeTitle}>Vivi Calascio</Text>
+       
+        </Box>
+        <View style={{ flex: 1 / 2, backgroundColor: 'yellow', alignItems: 'center', justifyContent: 'flex-end' }}>
+          <Text>.......................</Text>
         </View>
 
         <View style={styles.containerView2}>
-          <Button shadow={2} onPress={() => this.props.navigation.navigate('SceltaCaccia')} style={styles.buttonCacciaTesoro}>
-            Premi per scoprire di piu
+          <Button shadow={2} onPress={this.changeScreenSceltaCaccia} style={styles.buttonCacciaTesoro}>
+            Scegli la tua caccia al tesoro
           </Button>
           <Image style={styles.imageCacciaTesoro} source={imagePercorsoSrc}
             alt="Alternate Text"
@@ -42,7 +54,7 @@ export default class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   containerView2: {
-    flex: 1 / 2,
+    flex: 1/2,
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'column'
@@ -61,5 +73,24 @@ const styles = StyleSheet.create({
     height: HeightImagePercorso * RatioImagePercorso,
     alignSelf: 'flex-end'
   },
+  BarHome: {
+    width: win.width,
+    height:60,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection:'row',
+    backgroundColor:'#188FA7',
+  },
+  BarHomeTitle: {
+    color:'white',
+    fontSize:25, 
+    fontWeight:'800',
+    alignSelf:'center',
+    marginTop:14,
+    marginLeft:6
+  },imageCastello:{
+    width:35,
+    height:35,
+  }
 
 });
