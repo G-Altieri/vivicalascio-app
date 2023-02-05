@@ -1,100 +1,98 @@
 import * as React from 'react';
-import { View, Text, Button } from 'react-native';
-import { NavigationContainer, Image } from '@react-navigation/native';
+import { View, Text, Button, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/home'
 import SceltaCacciaScreen from './screens/sceltaCaccia'
 import IndovinelloScreen from './screens/indovinello'
-import { Icon } from "native-base";
-import { Path, G, SvgUri, } from "react-native-svg-uri";
+import Maps from './screens/maps'
+import { AlertDialog, Center, NativeBaseProvider } from "native-base";
 
-const iconMapSrc = require('../assets/iconMap.svg');
+
 
 const Stack = createNativeStackNavigator();
-function NavigatorFunc() {
-  var x = '1'
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName='HomeScreen' >
-        <Stack.Screen name="Home" options={{
-          headerShown: false,
-          animationTypeForReplace: 'push',
-          presentation: 'modal',
-          animation: 'flip'
-        }} component={HomeScreen} />
+class NavigatorFunc extends React.Component {
 
-        <Stack.Screen name="SceltaCacciaScreen"
-          options={{
-            title: 'Scegli il tuo destino',
-            headerStyle: {
-              backgroundColor: '#188FA7',
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-            headerShown: true,
-            animation: 'flip',
-            presentation: 'modal',
+  constructor(props) {
+    super(props);
+    this.state = {
+      x: '1'
+    }
+
+  }
+
+
+  render() {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='HomeScreen' >
+          <Stack.Screen name="Home" options={{
+            headerShown: false,
             animationTypeForReplace: 'push',
-          }} component={SceltaCacciaScreen} />
-
-
-        <Stack.Screen name="IndovinelloScreen"
-
-          options={{
-            headerBackVisible: false,
-            headerRight: buttonIndovinelli,
-            title: 'Indovinello ' + x,
-            headerStyle: {
-              backgroundColor: '#188FA7',
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-            headerShown: true,
-            animation: 'flip',
             presentation: 'modal',
-            animationTypeForReplace: 'push',
-          }} component={IndovinelloScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+            animation: 'flip'
+          }} component={HomeScreen} />
+
+          <Stack.Screen name="SceltaCacciaScreen"
+            options={{
+              title: 'Scegli il tuo destino',
+              headerStyle: {
+                backgroundColor: '#188FA7',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerShown: true,
+              animation: 'flip',
+              presentation: 'modal',
+              animationTypeForReplace: 'push',
+            }} component={SceltaCacciaScreen} />
+
+          <Stack.Screen name="IndovinelloScreen"
+            options={{
+              initialRouteName: 'IndovinelloScreen',
+              headerBackVisible: false,
+              title: 'Indovinello ' + this.state.x,
+              headerStyle: {
+                backgroundColor: '#188FA7',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerShown: true,
+              animation: 'flip',
+              presentation: 'modal',
+              animationTypeForReplace: 'push',
+            }}
+            component={IndovinelloScreen} />
+          <Stack.Screen name="Maps"
+            options={{
+             
+            }}
+            component={Maps} />
+        </Stack.Navigator>
+
+      </NavigationContainer>
+    );
+  }
+
 }
 
 
 
-const buttonIndovinelli = () => {
-  return (
-    <>
-      {/* <Button
-        onPress={() => alert('This is a button!')}
-        title="Info"
-        color="#000"
-      /> */}
 
-      <SvgUri
-        width="200"
-        height="200"
-        svgXmlData={iconMapSrc}
-      />
 
-    </>
-  )
-}
 
-const config = {
-  animation: 'spring',
-  config: {
-    stiffness: 100,
-    damping: 20,
-    mass: 0,
-    overshootClamping: false,
-    restDisplacementThreshold: 0.01,
-    restSpeedThreshold: 0.01,
-  },
-};
+
+
+
+const styles = StyleSheet.create({
+
+
+});
+
 
 
 export default NavigatorFunc;

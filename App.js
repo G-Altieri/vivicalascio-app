@@ -23,8 +23,7 @@ function App() {
   
   */
 
-
-import * as React from 'react';
+  import React, { useState } from "react";
 import { View, Text, Appearance } from 'react-native';
 //import { AppearanceProvider } from 'react-native-appearance';
 import { NativeBaseProvider, Box, Button } from "native-base";

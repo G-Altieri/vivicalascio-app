@@ -19,8 +19,9 @@ export default class HomeScreen extends React.Component {
 
   }
   
-  changeScreenSceltaCaccia = () => this.props.navigation.navigate('SceltaCacciaScreen')
+  changeScreenSceltaCaccia = () => this.props.navigation.navigate('Maps')
 
+  
 
   render() {
     return (
