@@ -7,7 +7,7 @@ import { NativeBaseProvider, Box, Button, Center } from "native-base";
 const imageBgSrc = require('../../assets/bg_carta.jpg');
 
 export default class SceltaCacciaScreen extends React.Component {
-    changeView = () => this.props.navigation.navigate('IndovinelloScreen')
+    changeView = () => this.props.navigation.navigate('DettagliSceltaCacciaScreen')
     
     
     render() {

@@ -18,10 +18,10 @@ export default class HomeScreen extends React.Component {
   state = {
 
   }
-  
-  changeScreenSceltaCaccia = () => this.props.navigation.navigate('Maps')
 
-  
+  changeScreenSceltaCaccia = () => this.props.navigation.navigate('SceltaCacciaScreen');
+
+
 
   render() {
     return (
@@ -30,11 +30,11 @@ export default class HomeScreen extends React.Component {
           <Image style={styles.imageCastello} source={imageCastelloSrc}
             alt="Alternate Text"
           />
-        <Text style={styles.BarHomeTitle}>Vivi Calascio</Text>
-       
+          <Text style={styles.BarHomeTitle}>Vivi Calascio</Text>
+
         </Box>
         <View style={{ flex: 1 / 2, backgroundColor: 'yellow', alignItems: 'center', justifyContent: 'flex-end' }}>
-          <Text>.......................</Text>
+      
         </View>
 
         <View style={styles.containerView2}>
@@ -55,7 +55,7 @@ export default class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   containerView2: {
-    flex: 1/2,
+    flex: 1 / 2,
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'column'
@@ -76,22 +76,22 @@ const styles = StyleSheet.create({
   },
   BarHome: {
     width: win.width,
-    height:60,
+    height: 100,
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection:'row',
-    backgroundColor:'#188FA7',
+    flexDirection: 'row',
+    backgroundColor: '#188FA7',
   },
   BarHomeTitle: {
-    color:'white',
-    fontSize:25, 
-    fontWeight:'800',
-    alignSelf:'center',
-    marginTop:14,
-    marginLeft:6
-  },imageCastello:{
-    width:35,
-    height:35,
+    color: 'white',
+    fontSize: 25,
+    fontWeight: '800',
+    alignSelf: 'center',
+    marginTop: 14,
+    marginLeft: 6
+  }, imageCastello: {
+    width: 35,
+    height: 35,
   }
 
 });
