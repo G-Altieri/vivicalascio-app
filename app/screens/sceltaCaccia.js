@@ -1,25 +1,132 @@
 import React, { setState } from 'react';
-import { StyleSheet, Text, View, Image, Dimensions, Alert, ImageBackground,TouchableOpacity } from 'react-native';
-import { NativeBaseProvider, Box, Button, Center } from "native-base";
+import { StyleSheet, Text, View, Dimensions, Alert, ImageBackground, TouchableOpacity } from 'react-native';
+import { Box, Heading, AspectRatio, Image, Center, HStack, Stack, NativeBaseProvider } from "native-base";
 
 
 
 const imageBgSrc = require('../../assets/bg_carta.jpg');
-
+//const imageCastelloUnoSrc = require('../../assets/calascioCastelloUno.jpg');
+//const imageCastelloDueSrc = require('../../assets/calascioCastelloDue.jpg');
+const imageCastelloUnoSrc = 'https://www.visitareabruzzo.it/wp-content/uploads/2020/04/stefano-sponta-1-758x505.jpg';
+const imageCastelloDueSrc = 'https://travelnauti.it/wp-content/uploads/2020/08/il-trekking-verso-il-castello-di-rocca-calascio.jpg';
 export default class SceltaCacciaScreen extends React.Component {
     changeView = () => this.props.navigation.navigate('DettagliSceltaCacciaScreen')
-    
-    
+
+
     render() {
         return (
             <View style={styles.container}>
                 <ImageBackground source={imageBgSrc} resizeMode="cover" style={styles.imageBg}>
-                    <TouchableOpacity style={[styles.box,styles.boxColor1]} onPress={this.changeView} activeOpacity={0.8}>
+                    <TouchableOpacity style={{}} onPress={this.changeView} activeOpacity={0.8}>
+                        <Box alignItems="center">
+                            <Box maxW="80" rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
+                                borderColor: "coolGray.600",
+                                backgroundColor: "gray.700"
+                            }} _web={{
+                                shadow: 2,
+                                borderWidth: 0
+                            }} _light={{
+                                backgroundColor: "gray.50"
+                            }}>
+                                <Box>
+                                    <AspectRatio w="100%" ratio={16 / 9}>
+                                        <Image source={{
+                                            uri: imageCastelloDueSrc,
+                                            cache: 'only-if-cached',
+                                        }} alt="image" />
+                                    </AspectRatio>
+                                    <Center bg="green.600" _dark={{
+                                        bg: "violet.400"
+                                    }} _text={{
+                                        color: "warmGray.50",
+                                        fontWeight: "700",
+                                        fontSize: "xs"
+                                    }} position="absolute" bottom="0" px="3" py="1.5">
+                                        FACILE
+                                    </Center>
+                                </Box>
+                                <Stack p="4" space={3}>
+                                    <Stack space={2}>
+                                        <Heading size="md" ml="-1">
+                                            Percorso Uno
+                                        </Heading>
+
+                                    </Stack>
+                                    <Text fontWeight="400">
+                                        immergiti per le strade di calascio per trovare quello che hai sempre voluto trovare
+                                    </Text>
+                                    <HStack alignItems="center" space={4} justifyContent="space-between">
+                                        <HStack alignItems="center">
+                                            <Text color="coolGray.600" _dark={{
+                                                color: "warmGray.200"
+                                            }} fontWeight="400">
+                                                durata 45 min
+                                            </Text>
+                                        </HStack>
+                                    </HStack>
+                                </Stack>
+                            </Box>
+                        </Box>
+
+
+
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.box,styles.boxColor2]} onPress={this.changeView}>
+                    <TouchableOpacity style={{}} onPress={this.changeView} activeOpacity={0.8}>
+                        <Box alignItems="center">
+                            <Box maxW="80" rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
+                                borderColor: "coolGray.600",
+                                backgroundColor: "gray.700"
+                            }} _web={{
+                                shadow: 2,
+                                borderWidth: 0
+                            }} _light={{
+                                backgroundColor: "gray.50"
+                            }}>
+                                <Box>
+                                    <AspectRatio w="100%" ratio={16 / 9}>
+                                        <Image source={{
+                                            uri: imageCastelloUnoSrc,
+                                            cache: 'only-if-cached',
+                                        }} alt="image" />
+                                    </AspectRatio>
+                                    <Center bg="red.600" _dark={{
+                                        bg: "violet.400"
+                                    }} _text={{
+                                        color: "warmGray.50",
+                                        fontWeight: "700",
+                                        fontSize: "xs"
+                                    }} position="absolute" bottom="0" px="3" py="1.5">
+                                        DIFFICILE
+                                    </Center>
+                                </Box>
+                                <Stack p="4" space={3}>
+                                    <Stack space={2}>
+                                        <Heading size="md" ml="-1">
+                                            Percorso Due
+                                        </Heading>
+                                    </Stack>
+                                    <Text fontWeight="400">
+                                        immergiti per le strade di calascio per trovare quello che hai sempre voluto trovare
+                                    </Text>
+                                    <HStack alignItems="center" space={4} justifyContent="space-between">
+                                        <HStack alignItems="center">
+                                            <Text color="coolGray.600" _dark={{
+                                                color: "warmGray.200"
+                                            }} fontWeight="400">
+                                                durata 1 ora e 30 min
+                                            </Text>
+                                        </HStack>
+                                    </HStack>
+                                </Stack>
+                            </Box>
+                        </Box>
+
+
+
                     </TouchableOpacity>
-                    <TouchableOpacity style={[styles.box,styles.boxColor3]} onPress={this.changeView}>
-                    </TouchableOpacity>
+
+
+
                 </ImageBackground>
             </View>
         );

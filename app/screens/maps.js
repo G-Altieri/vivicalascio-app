@@ -5,6 +5,7 @@ import MapView, { Marker } from 'react-native-maps'
 
 const iconStartMarkerSrc = require('../../assets/startMarker.png');
 const iconMarkerSrc = require('../../assets/marker.png');
+const iconMarkerGreenSrc = require('../../assets/markerGreen.png');
 const iconLocationSrc = require('../../assets/iconLocation.png');
 
 const Maps = ({ route, navigation }) => {
@@ -71,7 +72,8 @@ const Maps = ({ route, navigation }) => {
     //Recupero Paramatri dalla route
     const { markerRender } = route.params;
     const { infoBoxContent } = route.params;
-    const infoButton = 'Passa al indovinello'
+    const infoButton = markerRender == 4 ? 'Caccia Terminata' : 'Passa al indovinello'
+
     //Render Box Info
     const boxInfoRender = () => {
         if (infoBoxContent != null)
@@ -88,7 +90,10 @@ const Maps = ({ route, navigation }) => {
     }
 
     const changeViewIndovinello = () => {
-        navigation.navigate('IndovinelloScreen', {})
+        if (markerRender != 4)
+            navigation.navigate('IndovinelloScreen', { indexLivello: (markerRender + 1) })
+            else
+            navigation.navigate('Home')
     }
 
     //Iteratore per renderizzare i marker
@@ -100,7 +105,7 @@ const Maps = ({ route, navigation }) => {
                 title={marker.title}
                 description={marker.description}
             >
-                <Image style={styles.imageMarkerStart} source={iconMarkerSrc}
+                <Image style={styles.imageMarkerStart} source={index == (markerRender - 1) ? iconMarkerSrc : iconMarkerGreenSrc}
                     alt="Marker Start" />
             </Marker>
 

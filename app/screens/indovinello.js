@@ -1,7 +1,8 @@
 import React, { setState, useEffect } from 'react';
-import { StyleSheet, View, Image, Dimensions, Alert, ImageBackground, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, Dimensions, Alert, ImageBackground, ScrollView, TouchableOpacity } from 'react-native';
 import { NativeBaseProvider, Text, AlertDialog, Box, Center, Button } from "native-base";
 
+import livelli from '../dbLivelliCaccia.json'
 
 const iconMapSrc = require('../../assets/iconMap.png');
 const iconHelpSrc = require('../../assets/iconHelp.png');
@@ -10,46 +11,95 @@ const imageBgSrc = require('../../assets/bg_carta.jpg');
 
 
 
-export default function IndovinelloScreen({ navigation }) {
+export default function IndovinelloScreen({ route, navigation }) {
 
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [count, setCount] = React.useState(0);
-  const onClose = () => setIsOpen(false);
-  const cancelRef = React.useRef(null);
+  const [isOpenAiuto, setIsOpen] = React.useState(false);
+  const onCloseAiuto = () => setIsOpen(false);
+  const cancelRefAiuto = React.useRef(null);
+
 
   React.useLayoutEffect(() => {
 
     navigation.setOptions({
       headerRight: () => (
         <>
-          <TouchableOpacity title="Update count" onPress={() => { setIsOpen(!isOpen) }}>
+          <TouchableOpacity title="Update count" onPress={() => { setIsOpen(!isOpenAiuto) }}>
             <Image style={styles.iconHelp} source={iconHelpSrc}
               alt="Icon Help"
             />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => { navigation.navigate('Maps', { markerRender: 1, }) }}>
+          <TouchableOpacity onPress={() => { navigation.navigate('Maps', { markerRender: indexLivello, }) }}>
             <Image style={styles.iconMap} source={iconMapSrc}
               alt="Icon Mappa"
             />
           </TouchableOpacity>
 
         </>
-      )
+      ),
+      title: 'Livello ' + (indexLivello + 1),
+
     });
   }, [navigation],);
 
 
-  const indovinelli = {
-    risposta: {
-      uno: 'Risposta1',
-      due: 'Risposta2',
-      tre: 'Risposta3',
-      quatro: 'Risposta4',
-    },
-    domanda: 'Domanda1'
+  //Recupero Paramatri dalla route
+  var { indexLivello } = route.params;
+  indexLivello = indexLivello - 1
 
+
+
+  const renderInformazioni = () => {
+    if (livelli[indexLivello].info != null)
+      return (<ScrollView style={styles.containerInformazioni} >
+        <Text fontSize="xl" color={'#ffbf00'} fontWeight={'bold'} textAlign={'center'}>{livelli[indexLivello].infoTitle}</Text>
+        <Text fontSize="lg" color={'#00171f'}>{livelli[indexLivello].info}</Text>
+      </ScrollView>)
   }
+
+
+
+  const renderRisposte = () => {
+    return (<>
+      <TouchableOpacity onPress={livelli[indexLivello].rispostaEsatta == 1 ? rispostaEsatta : rispostaSbagliata}
+        style={[styles.boxRisposte, styles.colorBoxNormal, styles.marginRightBox]} >
+        <Text fontSize="lg" color={'white'}>{livelli[indexLivello].risposta.uno}</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={livelli[indexLivello].rispostaEsatta == 2 ? rispostaEsatta : rispostaSbagliata}
+        style={[styles.boxRisposte, styles.colorBoxNormal]} >
+        <Text fontSize="lg" color={'white'}>{livelli[indexLivello].risposta.due}</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={livelli[indexLivello].rispostaEsatta == 3 ? rispostaEsatta : rispostaSbagliata}
+        style={[styles.boxRisposte, styles.colorBoxNormal, styles.marginRightBox]} >
+        <Text fontSize="lg" color={'white'}>{livelli[indexLivello].risposta.tre}</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={livelli[indexLivello].rispostaEsatta == 4 ? rispostaEsatta : rispostaSbagliata}
+        style={[styles.boxRisposte, styles.colorBoxNormal]} >
+        <Text fontSize="lg" color={'white'}>{livelli[indexLivello].risposta.quatro}</Text>
+      </TouchableOpacity>
+    </>
+    )
+  }
+
+
+  const rispostaEsatta = () => { navigation.navigate('Maps', { markerRender: (indexLivello + 1), infoBoxContent: livelli[indexLivello].map.infoBox }) }
+  const rispostaSbagliata = () => {
+    Alert.alert(
+      'Risposta Sbagliata!!!',
+      'Ti ricordo che in alto pui chiedere un AIUTO',
+    );
+  }
+
+const getAiuto = ()=> {
+  onCloseAiuto()
+  Alert.alert(
+    'Aiuto',
+    livelli[indexLivello].aiuto,
+  );
+}
 
 
   return (<>
@@ -58,38 +108,23 @@ export default function IndovinelloScreen({ navigation }) {
 
       <View style={styles.containerDomanda}>
         <Box style={styles.boxDomanda}>
-          <Text fontSize="lg" color={'white'}>{indovinelli.domanda}</Text>
+          <Text fontSize="lg" color={'white'}>{livelli[indexLivello].domanda}</Text>
         </Box>
       </View>
 
 
       <View style={styles.containerRisposte}>
-
-        <View style={styles.containerInformazioni}>
-          <Text fontSize="lg" color={'white'}>{indovinelli.risposta.uno}</Text>
-        </View>
+        {renderInformazioni()}
 
         <View style={styles.containerBoxRisposte}>
-
-          <TouchableOpacity onPress={() => { console.log('GIovanni') }} style={[styles.boxRisposte, styles.colorBoxUno, styles.marginRightBox]} >
-            <Text fontSize="lg" color={'white'}>{indovinelli.risposta.uno}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => { console.log('GIovanni') }} style={[styles.boxRisposte, styles.colorBoxQuatro]} >
-            <Text fontSize="lg" color={'white'}>{indovinelli.risposta.due}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => { console.log('GIovanni') }} style={[styles.boxRisposte, styles.colorBoxTre, styles.marginRightBox]} >
-            <Text fontSize="lg" color={'white'}>{indovinelli.risposta.tre}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => { console.log('GIovanni') }} style={[styles.boxRisposte, styles.colorBoxDue]} >
-            <Text fontSize="lg" color={'white'}>{indovinelli.risposta.quatro}</Text>
-          </TouchableOpacity>
+          {renderRisposte()}
         </View>
       </View>
 
 
 
       {/* Conferma Aiuto */}
-      <AlertDialog leastDestructiveRef={cancelRef} isOpen={isOpen} onClose={onClose}>
+      <AlertDialog leastDestructiveRef={cancelRefAiuto} isOpen={isOpenAiuto} onClose={onCloseAiuto}>
         <AlertDialog.Content>
           <AlertDialog.CloseButton />
           <AlertDialog.Header>Aiuto</AlertDialog.Header>
@@ -98,10 +133,10 @@ export default function IndovinelloScreen({ navigation }) {
           </AlertDialog.Body>
           <AlertDialog.Footer>
             <Button.Group space={2}>
-              <Button variant="unstyled" colorScheme="danger" onPress={onClose} ref={cancelRef}>
+              <Button variant="unstyled" colorScheme="danger" onPress={onCloseAiuto} ref={cancelRefAiuto}>
                 No rifiuto
               </Button>
-              <Button colorScheme="success" onPress={onClose}   >
+              <Button colorScheme="success" onPress={getAiuto}   >
                 Si Accetto
               </Button>
             </Button.Group>
@@ -136,19 +171,19 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   containerRisposte: {
-    flex: 3 / 4,
+    flex: 4 / 5,
     flexDirection: 'column',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     padding: 10,
-    backgroundColor: 'red',
+    //   backgroundColor: 'red',
   },
   containerBoxRisposte: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'gray',
+    //   backgroundColor: 'gray',
   },
   boxRisposte: {
     height: 100,
@@ -169,15 +204,15 @@ const styles = StyleSheet.create({
 
   },
   containerDomanda: {
-    flex: 1 / 4,
+    flex: 1 / 5,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: 'violet',
+    // backgroundColor: 'violet',
   },
   boxDomanda: {
-    backgroundColor: '#006d77',
+    backgroundColor: '#008000',
     height: 150,
     margin: 2,
     flexBasis: '98%',
@@ -194,32 +229,32 @@ const styles = StyleSheet.create({
 
     elevation: 7,
   },
-  colorBoxUno: {
-    backgroundColor: '#003049'
+  colorBoxNormal: {
+    backgroundColor: '#ca0c18'
   },
-  colorBoxDue: {
-    backgroundColor: '#028090'
+  colorBoxGiusto: {
+    backgroundColor: 'green'
   },
-  colorBoxTre: {
-    backgroundColor: '#d62828'
-  },
-  colorBoxQuatro: {
-    backgroundColor: '#840032'
-  },
+
   marginRightBox: {
     marginRight: 5,
   },
 
   containerInformazioni: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
+    // flexDirection: 'row',
+    // flexWrap: 'wrap',
+    //justifyContent: 'center',
+    //alignItems: 'center',
     flex: 1,
     width: '100%',
-    backgroundColor: 'purple',
-    marginBottom:10,
+    backgroundColor: '#f7f4f3',
+    marginBottom: 20,
     borderRadius: 20,
+    //paddingTop: 14,
+    paddingLeft: 14,
+    paddingRight: 14,
+    borderColor: '#ffbf00',
+    borderWidth: 2,
   }
 
 });

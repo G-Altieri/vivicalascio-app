@@ -1,0 +1,64 @@
+[
+    {
+        "map": {
+            "infoBox": "Bravo hai risolto il primo indovinello, ora vai sul secondo luogo"
+        },
+        "domanda": "Domanda Livello 1",
+        "risposta": {
+            "uno": "Risposta 1 Livello 1",
+            "due": "Risposta 2 Livello 1",
+            "tre": "Risposta 3 Livello 1",
+            "quatro": "Risposta 4 Livello 1"
+        },
+        "rispostaEsatta": 2,
+        "aiuto": "Aiuto Livello 1"
+    },
+    {
+        "domanda": "Domanda Livello 2",
+        "risposta": {
+            "uno": "Risposta 1 Livello 2",
+            "due": "Risposta 2 Livello 2",
+            "tre": "Risposta 3 Livello 2",
+            "quatro": "Risposta 4 Livello 2"
+        },
+        "infoTitle": "Descrizione posto 1",
+        "info": "ASDASDASDASDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdkjhfkdshfkjdshfkjdshfkjdshjfkhdskjfhdskjhfkjdshfkjhdkjfhdkjshfkjdshfkjhdskjfhkjzhfkjdshkjaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiikkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkassssssssssssssssssssdsssssssssssssssssssssssssssssssssssssssssssssssddddddddddddddddddddddddddddd",
+        "map": {
+            "infoBox": "Dai che te ne manca uno"
+        },
+        "rispostaEsatta": 2,
+        "aiuto": "Aiuto Livello 2"
+    },
+    {
+        "domanda": "Domanda Livello 3",
+        "risposta": {
+            "uno": "Risposta 1 Livello 3",
+            "due": "Risposta 2 Livello 3",
+            "tre": "Risposta 3 Livello 3",
+            "quatro": "Risposta 4 Livello 3"
+        },
+        "infoTitle": "Descrizione posto 2",
+        "info": "ASDASDASDASDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdkjhfkdshfkjdshfkjdshfkjdshjfkhdskjfhdskjhfkjdshfkjhdkjfhdkjshfkjdshfkjhdskjfhkjzhfkjdshkjaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiikkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkassssssssssssssssssssdsssssssssssssssssssssssssssssssssssssssssssssssddddddddddddddddddddddddddddd",
+        "map": {
+            "infoBox": "Bravo recati sul ultimo posto"
+        },
+        "rispostaEsatta": 2,
+        "aiuto": "Aiuto Livello 3"
+    },
+    {
+        "domanda": "Domanda Livello Finale",
+        "risposta": {
+            "uno": "Risposta 1 Livello 4",
+            "due": "Risposta 2 Livello 4",
+            "tre": "Risposta 3 Livello 4",
+            "quatro": "Risposta 4 Livello 4"
+        },
+        "infoTitle": "Descrizione posto 3",
+        "info": "ASDASDASDASDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdkjhfkdshfkjdshfkjdshfkjdshjfkhdskjfhdskjhfkjdshfkjhdkjfhdkjshfkjdshfkjhdskjfhkjzhfkjdshkjaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiikkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkassssssssssssssssssssdsssssssssssssssssssssssssssssssssssssssssssssssddddddddddddddddddddddddddddd",
+        "map": {
+            "infoBox": "Complimenti hai finito la caccia"
+        },
+        "rispostaEsatta": 2,
+        "aiuto": "Aiuto Livello 4"
+    }
+]

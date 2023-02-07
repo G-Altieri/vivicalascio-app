@@ -17,7 +17,6 @@ class NavigatorFunc extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      x: '1'
     }
 
   }
@@ -72,7 +71,7 @@ class NavigatorFunc extends React.Component {
             options={{
               initialRouteName: 'IndovinelloScreen',
               headerBackVisible: true,
-              title: 'Indovinello ' + this.state.x,
+              title: 'Indovinello ',
               headerStyle: {
                 backgroundColor: '#188FA7',
               },
