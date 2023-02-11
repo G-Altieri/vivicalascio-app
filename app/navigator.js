@@ -6,7 +6,9 @@ import HomeScreen from './screens/home'
 import SceltaCacciaScreen from './screens/sceltaCaccia'
 import IndovinelloScreen from './screens/indovinello'
 import DettagliSceltaCacciaScreen from './screens/dettagliCaccia'
+import Quiz from './screens/quiz'
 import Maps from './screens/maps'
+import CreaPercorso from './screens/creaPercorso'
 import { AlertDialog, Center, NativeBaseProvider } from "native-base";
 
 
@@ -106,6 +108,44 @@ class NavigatorFunc extends React.Component {
             getId={({ params }) =>  Math.floor(Math.random() * 50)}
             key={({ params }) =>  Math.floor(Math.random() * 50)}
             component={Maps} />
+          <Stack.Screen name="CreaPercorso"
+            options={{
+              headerBackVisible: true,
+              title: 'Crea Percorso',
+              headerStyle: {
+                backgroundColor: '#188FA7',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerShown: true,
+              animation: 'flip',
+              presentation: 'modal',
+              animationTypeForReplace: 'push',
+            }}
+            getId={({ params }) =>  Math.floor(Math.random() * 50)}
+            key={({ params }) =>  Math.floor(Math.random() * 50)}
+            component={CreaPercorso} />
+          <Stack.Screen name="Quiz"
+            options={{
+              headerBackVisible: true,
+              title: 'Quiz',
+              headerStyle: {
+                backgroundColor: '#188FA7',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerShown: true,
+              animation: 'flip',
+              presentation: 'modal',
+              animationTypeForReplace: 'push',
+            }}
+            getId={({ params }) =>  Math.floor(Math.random() * 50)}
+            key={({ params }) =>  Math.floor(Math.random() * 50)}
+            component={Quiz} />
         </Stack.Navigator>
 
       </NavigationContainer>

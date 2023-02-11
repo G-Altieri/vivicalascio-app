@@ -19,7 +19,8 @@ export default class HomeScreen extends React.Component {
 
   }
 
-  changeScreenSceltaCaccia = () => this.props.navigation.navigate('SceltaCacciaScreen');
+  changeScreenSceltaCaccia = () => this.props.navigation.navigate('Quiz');
+  changeScreenPercorso = () => this.props.navigation.navigate('CreaPercorso');
 
 
 
@@ -33,8 +34,11 @@ export default class HomeScreen extends React.Component {
           <Text style={styles.BarHomeTitle}>Vivi Calascio</Text>
 
         </Box>
-        <View style={{ flex: 1 / 2, backgroundColor: 'yellow', alignItems: 'center', justifyContent: 'flex-end' }}>
-      
+        <View style={
+          styles.containerView}>
+          <Button shadow={2} onPress={this.changeScreenPercorso} style={styles.buttonCacciaTesoro}>
+            Crea il tuo Percoso
+          </Button>
         </View>
 
         <View style={styles.containerView2}>
@@ -54,6 +58,12 @@ export default class HomeScreen extends React.Component {
 
 
 const styles = StyleSheet.create({
+  containerView: {
+    flex: 1 / 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column'
+  },
   containerView2: {
     flex: 1 / 2,
     alignItems: 'center',
