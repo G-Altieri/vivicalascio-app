@@ -9,6 +9,7 @@ import DettagliSceltaCacciaScreen from './screens/dettagliCaccia'
 import Quiz from './screens/quiz'
 import Maps from './screens/maps'
 import CreaPercorso from './screens/creaPercorso'
+import Punteggio from './screens/punteggio'
 import { AlertDialog, Center, NativeBaseProvider } from "native-base";
 
 
@@ -146,6 +147,25 @@ class NavigatorFunc extends React.Component {
             getId={({ params }) =>  Math.floor(Math.random() * 50)}
             key={({ params }) =>  Math.floor(Math.random() * 50)}
             component={Quiz} />
+          <Stack.Screen name="Punteggio"
+            options={{
+              headerBackVisible: false,
+              title: 'Punteggio',
+              headerStyle: {
+                backgroundColor: '#188FA7',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerShown: true,
+              animation: 'flip',
+              presentation: 'modal',
+              animationTypeForReplace: 'push',
+            }}
+            getId={({ params }) =>  Math.floor(Math.random() * 50)}
+            key={({ params }) =>  Math.floor(Math.random() * 50)}
+            component={Punteggio} />
         </Stack.Navigator>
 
       </NavigationContainer>

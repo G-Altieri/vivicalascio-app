@@ -13,46 +13,11 @@ const imageBgSrc = require('../../assets/bg_carta.jpg');
 const Maps = ({ route, navigation }) => {
 
     const mapRef = useRef(null);
+    
     //cordinate dei marker
-    const [markerRender, setMarkerRender] = useState(0)
-    const [checkValue, setCheckValue] = useState([false, false, false, true])
+    var [checkValue, setCheckValue] = useState([false, false, false, false])
 
-    const [markers, setMarker] = useState({
-        marker: [{
-            title: 'Posto Uno',
-            coordinates: {
-                latitude: 42.325663,
-                longitude: 13.695390
-            },
-            description: 'Fontana'
-        },
-        {
-            title: 'Posto Due',
-            coordinates: {
-                latitude: 42.326022,
-                longitude: 13.694076
-            },
-            description: 'Roccia'
-        },
-        {
-            title: 'Posto Tre',
-            coordinates: {
-                latitude: 42.328866,
-                longitude: 13.688898
-            },
-            description: 'Castello'
-        },
-        {
-            title: 'Posto Tre',
-            coordinates: {
-                latitude: 42.328866,
-                longitude: 13.688898
-            },
-            description: 'Castello'
-        }]
-    });
-
-    const [luoghi, setLuoghi] = useState({
+    var [luoghi, setLuoghi] = useState({
         luogo: [{
             title: 'Posto Uno',
             check: '1',
@@ -143,18 +108,44 @@ const Maps = ({ route, navigation }) => {
        }
    */
 
-    const [itemList, setitemList] = useState([])
 
 
+    const imageSrc = ['https://www.visitareabruzzo.it/wp-content/uploads/2020/04/stefano-sponta-1-758x505.jpg',
+        'https://travelnauti.it/wp-content/uploads/2020/08/il-trekking-verso-il-castello-di-rocca-calascio.jpg',
+        'https://www.borghiautenticiditalia.it/sites/default/files/RoccaCalascio-ph.Fabio-Menichini.jpg',
+        'https://www.viaggiareconlentezza.com/wp-content/uploads/2022/01/Rocca-Calascio-Abruzzo-Italia-Meraviglia-fotografia-0-678x381.jpg'
+    ]
 
 
-
-
-    const imageCastelloUnoSrc = 'https://www.visitareabruzzo.it/wp-content/uploads/2020/04/stefano-sponta-1-758x505.jpg';
-    const imageCastelloDueSrc = 'https://travelnauti.it/wp-content/uploads/2020/08/il-trekking-verso-il-castello-di-rocca-calascio.jpg';
     const win = Dimensions.get('window');
     const winImage = win.width / 2;
 
+
+
+
+
+
+
+    var listMarker = checkValue.map((marker, index) => {
+        if (marker) {
+            return <Marker
+                key={index}
+                coordinate={luoghi.luogo[index].coordinates}
+                title={luoghi.luogo[index].title}
+                description={luoghi.luogo[index].description}
+            >
+                <Image style={styles.imageMarkerStart} source={iconMarkerSrc} alt="Marker Start" />
+            </Marker>
+        }
+    })
+
+    const onClickCheck = (state, i) => {
+        let var1 = [...checkValue];
+        console.log('old ' + var1 + ' i '+i)
+        var1[i] = state
+        console.log('new ' + var1)
+        setCheckValue(var1);
+    }
 
     //Render della pagina
     return (
@@ -166,47 +157,7 @@ const Maps = ({ route, navigation }) => {
                     initialRegion={calascioRegion}
                     mapType='satellite'
                 >
-                    {
-                        checkValue[0] ?
-                        <Marker
-                            style={{ display: checkValue[1] == 0 ? 'none' : 'flex' }}                    
-                            key={'43564'+checkValue[0]}
-                            coordinate={luoghi.luogo[0].coordinates}
-                            title={luoghi.luogo[0].title}
-                            description={luoghi.luogo[0].description}
-                        >
-                            <Image style={styles.imageMarkerStart} source={iconMarkerSrc} alt="Marker Start" />
-                        </Marker>
-                        :null
-                    }
-                    <Marker
-                        style={{ display: checkValue[1] == 0 ? 'none' : 'flex' }}
-                        key={1234}
-                        coordinate={luoghi.luogo[1].coordinates}
-                        title={luoghi.luogo[1].title}
-                        description={luoghi.luogo[1].description}
-                    >
-                        <Image style={styles.imageMarkerStart} source={iconMarkerSrc} alt="Marker Start" />
-                    </Marker>
-                    <Marker
-                        style={{ display: checkValue[2] == 0 ? 'none' : 'flex' }}
-                        key={4321}
-                        coordinate={luoghi.luogo[2].coordinates}
-                        title={luoghi.luogo[2].title}
-                        description={luoghi.luogo[2].description}
-                    >
-                        <Image style={styles.imageMarkerStart} source={iconMarkerSrc} alt="Marker Start" />
-                    </Marker>
-                    <Marker
-                        style={54354}
-                        key={Math.floor(Math.random() * 50)}
-                        coordinate={luoghi.luogo[3].coordinates}
-                        title={luoghi.luogo[3].title}
-                        description={luoghi.luogo[3].description}
-                    >
-                        <Image style={styles.imageMarkerStart} source={iconMarkerSrc} alt="Marker Start" />
-                    </Marker>
-
+                    {listMarker}
                 </MapView>
                 <Heading size="lg" ml="5" my={2}>
                     Scegli i luoghi che vuoi visitare
@@ -218,26 +169,12 @@ const Maps = ({ route, navigation }) => {
                                 return <View style={styles.rowChecked} key={index}>
                                     <AspectRatio w={winImage - 20} ratio={1 / 1} >
                                         <Image source={{
-                                            uri: imageCastelloDueSrc,
+                                            uri: imageSrc[index],
                                             cache: 'only-if-cached',
                                         }} alt="image" borderRadius='20' />
                                     </AspectRatio>
                                     <View style={{ marginLeft: 15, flexDirection: 'column', justifyContent: 'space-between', height: winImage, }}>
-                                        <Checkbox value={index} size="lg" marginTop={(winImage / 2) - 20} colorScheme="green" onChange={(state) => {
-                                            if (state) {
-                                                var var1 = checkValue
-                                                var1[index] = true
-                                                setCheckValue(var1);
-                                            } else {
-                                                var var1 = checkValue
-                                                var1[index] = false
-                                                setCheckValue(var1);
-                                            }
-                                            console.log(checkValue)
-                                            console.log(checkValue[0])
-                                            //   console.log( checkValue[0] == 0 ? false : true)
-                                        }}
-                                        >
+                                        <Checkbox value={true} size="lg" marginTop={(winImage / 2) - 20} colorScheme="green" onChange={(state) => { onClickCheck(state, index) }}>
                                             {luogo.title}
                                         </Checkbox>
                                         <View style={{ alignItems: 'center', flexDirection: 'row', marginBottom: 10, }}>
@@ -250,24 +187,12 @@ const Maps = ({ route, navigation }) => {
                                 return <View style={[styles.rowChecked, { flexDirection: 'row-reverse' }]} key={index}>
                                     <AspectRatio w={winImage - 20} ratio={1 / 1} >
                                         <Image source={{
-                                            uri: imageCastelloDueSrc,
+                                            uri: imageSrc[index],
                                             cache: 'only-if-cached',
                                         }} alt="image" borderRadius='20' />
                                     </AspectRatio>
                                     <View style={{ alignItems: 'flex-start', width: winImage - 20, flexDirection: 'column', justifyContent: 'space-between', height: winImage, }}>
-                                        <Checkbox value={index} size="lg" marginTop={(winImage / 2) - 20} colorScheme="green" onChange={(state) => {
-                                            if (state) {
-                                                var var1 = checkValue
-                                                var1[index] = 1
-                                                setCheckValue(var1);
-                                            } else {
-                                                var var1 = checkValue
-                                                var1[index] = 0
-                                                setCheckValue(var1);
-                                            }
-
-                                            console.log(checkValue)
-                                        }} >
+                                        <Checkbox value={checkValue[index]} size="lg" marginTop={(winImage / 2) - 20} colorScheme="green" onChange={(state) => onClickCheck(state, index)}>
                                             {luogo.title}
                                         </Checkbox>
                                         <View style={{ alignItems: 'center', flexDirection: 'row', marginBottom: 10, }}>

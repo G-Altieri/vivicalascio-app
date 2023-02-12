@@ -93,7 +93,7 @@ const Maps = ({ route, navigation }) => {
         if (markerRender != 4)
             navigation.navigate('IndovinelloScreen', { indexLivello: (markerRender + 1) })
             else
-            navigation.navigate('Home')
+            navigation.navigate('Quiz')
     }
 
     //Iteratore per renderizzare i marker

@@ -1,25 +1,27 @@
 import React, { setState } from 'react';
-import { StyleSheet, Text, View, Dimensions, ScrollView, ImageBackground } from 'react-native';
-import { NativeBaseProvider, Box, Button, Center, Image } from "native-base";
+import { StyleSheet, Text, View, Dimensions, ScrollView, ImageBackground, TouchableWithoutFeedback } from 'react-native';
+import { NativeBaseProvider, Box, Button, Center, Image, AspectRatio, Heading } from "native-base";
 
 
 
 const imageBgSrc = require('../../assets/bg_carta.jpg');
-const imagePercorsoSrc = require('../../assets/imgPercorso.png');
 const imageCastelloSrc = require('../../assets/castello.png');
+const imagePercorsoSrc = require('../../assets/creaPercorso.png');
+const imageCacciaSrc = require('../../assets/cacciaTesoro.png');
 const win = Dimensions.get('window');
 
-const WidthImagePercorso = 1408;
-const HeightImagePercorso = 974;
+const WidthImagePercorso = 862;
+const HeightImagePercorso = 608;
 const RatioImagePercorso = win.width / WidthImagePercorso;
+const WidthImageCaccia = 1558;
+const HeightImageCaccia = 1062;
+const RatioImageCaccia = win.width / WidthImageCaccia;
 
 
 export default class HomeScreen extends React.Component {
-  state = {
 
-  }
-
-  changeScreenSceltaCaccia = () => this.props.navigation.navigate('Quiz');
+  // changeScreenSceltaCaccia = () => this.props.navigation.navigate('Quiz');
+  changeScreenSceltaCaccia = () => this.props.navigation.navigate('SceltaCacciaScreen');
   changeScreenPercorso = () => this.props.navigation.navigate('CreaPercorso');
 
 
@@ -32,24 +34,36 @@ export default class HomeScreen extends React.Component {
             alt="Alternate Text"
           />
           <Text style={styles.BarHomeTitle}>Vivi Calascio</Text>
-
         </Box>
-        <View style={
-          styles.containerView}>
-          <Button shadow={2} onPress={this.changeScreenPercorso} style={styles.buttonCacciaTesoro}>
-            Crea il tuo Percoso
-          </Button>
+
+
+        <View style={styles.containerPercorso}>
+          <TouchableWithoutFeedback onPress={this.changeScreenPercorso}>
+            <Image style={styles.containerImaginePercorso} source={imagePercorsoSrc}
+              alt="Alternate Text"
+            />
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={this.changeScreenPercorso}>
+            <Heading size="2xl" fontWeight={700} my={2}>
+              Crea il tuo Percorso
+            </Heading>
+          </TouchableWithoutFeedback>
+
         </View>
 
-        <View style={styles.containerView2}>
-          <Button shadow={2} onPress={this.changeScreenSceltaCaccia} style={styles.buttonCacciaTesoro}>
-            Scegli la tua caccia al tesoro
-          </Button>
-          <Image style={styles.imageCacciaTesoro} source={imagePercorsoSrc}
+        <View style={styles.containerPercorso}>
+        <TouchableWithoutFeedback onPress={this.changeScreenSceltaCaccia}>
+          <Image style={styles.containerImagineCaccia} source={imageCacciaSrc}
             alt="Alternate Text"
           />
-
+             </TouchableWithoutFeedback>
+           <TouchableWithoutFeedback onPress={this.changeScreenSceltaCaccia}>
+          <Heading size="2xl" fontWeight={700} my={2}>
+            Caccia al Tesoro
+          </Heading>
+          </TouchableWithoutFeedback>
         </View>
+
       </ImageBackground>
     );
   }
@@ -58,32 +72,36 @@ export default class HomeScreen extends React.Component {
 
 
 const styles = StyleSheet.create({
-  containerView: {
-    flex: 1 / 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column'
-  },
-  containerView2: {
-    flex: 1 / 2,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'column'
-  },
-  buttonCacciaTesoro: {
-    borderRadius: 50, backgroundColor: 'red'
-  },
   imageBg: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center', alignItems: 'center',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
     width: '100%',
   },
-  imageCacciaTesoro: {
+
+  containerImaginePercorso: {
     width: win.width,
     height: HeightImagePercorso * RatioImagePercorso,
-    alignSelf: 'flex-end'
+    alignSelf: 'flex-start'
   },
+  containerImagineCaccia: {
+    width: win.width,
+    height: HeightImageCaccia * RatioImageCaccia,
+    alignSelf: 'flex-start'
+  },
+
+
+
+  containerPercorso: {
+    //  backgroundColor: 'red',
+    flex: 1 / 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  },
+
+
+
   BarHome: {
     width: win.width,
     height: 100,
@@ -99,7 +117,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 14,
     marginLeft: 6
-  }, imageCastello: {
+  },
+  imageCastello: {
     width: 35,
     height: 35,
   }

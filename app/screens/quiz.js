@@ -2,7 +2,6 @@ import React, { setState, useState, useEffect } from 'react';
 import { StyleSheet, View, Image, Dimensions, Alert, ImageBackground, ScrollView, TouchableOpacity } from 'react-native';
 import { NativeBaseProvider, Text, AlertDialog, Box, Center, Button, Heading } from "native-base";
 
-import livelli from '../dbLivelliCaccia.json'
 
 const iconMapSrc = require('../../assets/iconMap.png');
 const iconHelpSrc = require('../../assets/iconHelp.png');
@@ -13,7 +12,6 @@ const imageBgSrc = require('../../assets/bg_carta.jpg');
 
 export default function Quiz({ route, navigation }) {
 
-    const [markerRender, setMarkerRender] = useState(0)
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
@@ -26,61 +24,77 @@ export default function Quiz({ route, navigation }) {
     }, [navigation],);
 
 
-    const domande = [
+    var domandeArray = [
         {
             domanda: 'Domanda 1',
             risposta1: 'risposta 1',
             risposta2: 'risposta 2',
-            rispCorretta: 2,
+            rispCorretta: 1,
+            rispostaData: 0,
         },
         {
             domanda: 'Domanda 2',
             risposta1: 'risposta 1',
             risposta2: 'risposta 2',
-            rispCorretta: 2,
+            rispCorretta: 1,
+            rispostaData: 0,
         },
         {
             domanda: 'Domanda 3',
             risposta1: 'risposta 1',
             risposta2: 'risposta 2',
             rispCorretta: 2,
+            rispostaData: 0,
         },
         {
             domanda: 'Domanda 4',
             risposta1: 'risposta 1',
             risposta2: 'risposta 2',
-            rispCorretta: 2,
+            rispCorretta: 1,
+            rispostaData: 0,
         },
         {
             domanda: 'Domanda 5',
             risposta1: 'risposta 1',
             risposta2: 'risposta 2',
             rispCorretta: 2,
+            rispostaData: 0,
         },
     ]
 
+    var [domande, setDomande] = useState(domandeArray)
+
+    const changeViewPunteggio = () => navigation.navigate('Punteggio', { punteggio: domande, });
 
 
-    const listDomande = domande.map((domanda, index) => {
-        return <>
-            <Box style={styles.boxDomande}>
-                <Heading size="lg" ml="5" my={2} fontWeight={500}>
-                    {domanda.domanda}
-                </Heading>
-                <Box style={styles.boxRisposte}>
-                    <Button style={[styles.risposta, markerRender == 0 ? styles.bgNormal : styles.bgVerde]} onPress={() => { setMarkerRender(!markerRender) }}>
-                        <Text >
-                            {domanda.risposta1}
-                        </Text>
-                    </Button>
-                    <Button style={[styles.risposta, markerRender == 1 ? styles.bgNormal : styles.bgVerde]} onPress={() => { setMarkerRender(!markerRender) }}>
-                        <Text>
-                            {domanda.risposta1}
-                        </Text>
-                    </Button>
-                </Box>
+    var listDomande = domande.map((domanda, index) => {
+        return <Box style={styles.boxDomande} key={'a' + index}>
+            <Heading size="lg" ml="5" my={2} fontWeight={500} >
+                {domanda.domanda}
+            </Heading>
+            <Box style={styles.boxRisposte}>
+                <Button style={[styles.risposta, domanda.rispostaData == 1 ? styles.bgVerde : styles.bgNormal]} onPress={() => {
+                    const newDomande = [...domande];
+                    newDomande[index]['rispostaData'] = 1,
+                        setDomande(newDomande)
+                }
+                }>
+                    <Text >
+                        {domanda.risposta1}
+                    </Text>
+                </Button>
+                <Button style={[styles.risposta, domanda.rispostaData == 2 ? styles.bgVerde : styles.bgNormal]} onPress={() => {
+                    const newDomande = [...domande];
+                    newDomande[index]['rispostaData'] = 2,
+                        setDomande(newDomande)
+                }}>
+                    <Text >
+                        {domanda.risposta2}
+                    </Text>
+                </Button>
             </Box>
-        </>
+        </Box>
+
     })
 
 
@@ -89,14 +103,16 @@ export default function Quiz({ route, navigation }) {
             <ScrollView>
                 {listDomande}
             </ScrollView>
-            <Box style={styles.inviaRisposte}>
+            <Button style={styles.inviaRisposte} onPress={changeViewPunteggio}>
                 <Text>
                     Invia le Risposte
                 </Text>
-            </Box>
+            </Button>
         </ImageBackground>
 
     </>)
+
+
 
 }
 
@@ -139,7 +155,7 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         flexDirection: 'column',
         alignItems: 'center',
-        
+
     },
     bgVerde: {
         backgroundColor: '#20bf55',
@@ -149,7 +165,7 @@ const styles = StyleSheet.create({
     },
     inviaRisposte: {
         backgroundColor: '#20bf55',
-        borderRadius: 15,
+        //  borderRadius: 15,
         width: '100%',
         height: 60,
         alignItems: 'center',
