@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, View, Dimensions, Alert, ImageBackground, TouchableOpacity, SafeAreaView, ScrollView } from 'react-native';
 import { NativeBaseProvider, Text, AlertDialog, Center, Button, Checkbox, Image, InfoIcon, Box, Heading, AspectRatio, } from "native-base";
-import MapView, { Marker } from 'react-native-maps'
+import MapView, { Marker,PROVIDER_GOOGLE } from 'react-native-maps'
 
 const iconStartMarkerSrc = require('../../assets/startMarker.png');
 const iconMarkerSrc = require('../../assets/marker.png');
@@ -19,7 +19,7 @@ const Maps = ({ route, navigation }) => {
 
     var [luoghi, setLuoghi] = useState({
         luogo: [{
-            title: 'Posto Uno',
+            title: 'Palazzo \nTaranta',
             check: '1',
             coordinates: {
                 latitude: 42.325663,
@@ -28,7 +28,7 @@ const Maps = ({ route, navigation }) => {
             description: 'Fontana'
         },
         {
-            title: 'Posto Due',
+            title: 'Chiesa di \nSan Nicola',
             check: '2',
             coordinates: {
                 latitude: 42.326022,
@@ -37,7 +37,7 @@ const Maps = ({ route, navigation }) => {
             description: 'Roccia'
         },
         {
-            title: 'Posto Tre',
+            title: 'Castello',
             coordinates: {
                 latitude: 42.328866,
                 longitude: 13.688898
@@ -45,7 +45,7 @@ const Maps = ({ route, navigation }) => {
             description: 'Castello'
         },
         {
-            title: 'Posto Quattro',
+            title: 'Convento Francescano',
             check: '4',
             coordinates: {
                 latitude: 42.327037,
@@ -110,10 +110,10 @@ const Maps = ({ route, navigation }) => {
 
 
 
-    const imageSrc = ['https://www.visitareabruzzo.it/wp-content/uploads/2020/04/stefano-sponta-1-758x505.jpg',
-        'https://travelnauti.it/wp-content/uploads/2020/08/il-trekking-verso-il-castello-di-rocca-calascio.jpg',
-        'https://www.borghiautenticiditalia.it/sites/default/files/RoccaCalascio-ph.Fabio-Menichini.jpg',
-        'https://www.viaggiareconlentezza.com/wp-content/uploads/2022/01/Rocca-Calascio-Abruzzo-Italia-Meraviglia-fotografia-0-678x381.jpg'
+    const imageSrc = ['https://www.calascio.com/content/2-tourism/1-what-to-see-do/16.jpg',
+        'https://i0.wp.com/maridagalloni.com/wp-content/uploads/2022/06/Campanile-della-chiesa-di-San-Nicola-di-Bari-a-Calascio-.jpg',
+        'https://castlesintheworld.files.wordpress.com/2014/01/castelli-di-rocca-calascio.jpg',
+        'https://abruzzolive.it/wp-content/uploads/2019/07/CalascioSMdGrazie184-450x300.jpg'
     ]
 
 
@@ -141,9 +141,9 @@ const Maps = ({ route, navigation }) => {
 
     const onClickCheck = (state, i) => {
         let var1 = [...checkValue];
-        console.log('old ' + var1 + ' i '+i)
+       // console.log('old ' + var1 + ' i '+i)
         var1[i] = state
-        console.log('new ' + var1)
+      //  console.log('new ' + var1)
         setCheckValue(var1);
     }
 
@@ -156,6 +156,7 @@ const Maps = ({ route, navigation }) => {
                     ref={mapRef}
                     initialRegion={calascioRegion}
                     mapType='satellite'
+                    provider={PROVIDER_GOOGLE}
                 >
                     {listMarker}
                 </MapView>
@@ -174,7 +175,7 @@ const Maps = ({ route, navigation }) => {
                                         }} alt="image" borderRadius='20' />
                                     </AspectRatio>
                                     <View style={{ marginLeft: 15, flexDirection: 'column', justifyContent: 'space-between', height: winImage, }}>
-                                        <Checkbox value={true} size="lg" marginTop={(winImage / 2) - 20} colorScheme="green" onChange={(state) => { onClickCheck(state, index) }}>
+                                        <Checkbox value={true} size="md" marginTop={(winImage / 2) - 20} colorScheme="green" onChange={(state) => { onClickCheck(state, index) }}>
                                             {luogo.title}
                                         </Checkbox>
                                         <View style={{ alignItems: 'center', flexDirection: 'row', marginBottom: 10, }}>
@@ -192,7 +193,7 @@ const Maps = ({ route, navigation }) => {
                                         }} alt="image" borderRadius='20' />
                                     </AspectRatio>
                                     <View style={{ alignItems: 'flex-start', width: winImage - 20, flexDirection: 'column', justifyContent: 'space-between', height: winImage, }}>
-                                        <Checkbox value={checkValue[index]} size="lg" marginTop={(winImage / 2) - 20} colorScheme="green" onChange={(state) => onClickCheck(state, index)}>
+                                        <Checkbox value={checkValue[index]} size="md" marginTop={(winImage / 2) - 20} colorScheme="green" onChange={(state) => onClickCheck(state, index)}>
                                             {luogo.title}
                                         </Checkbox>
                                         <View style={{ alignItems: 'center', flexDirection: 'row', marginBottom: 10, }}>

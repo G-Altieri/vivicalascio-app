@@ -12,8 +12,6 @@ import CreaPercorso from './screens/creaPercorso'
 import Punteggio from './screens/punteggio'
 import { AlertDialog, Center, NativeBaseProvider } from "native-base";
 
-
-
 const Stack = createNativeStackNavigator();
 class NavigatorFunc extends React.Component {
 
@@ -54,7 +52,7 @@ class NavigatorFunc extends React.Component {
           <Stack.Screen name="DettagliSceltaCacciaScreen"
             options={{
               initialRouteName: 'Info Caccia al tesoro',
-              headerBackVisible: true,
+              headerBackVisible: false,
               title: 'Info Caccia al tesoro',
               headerStyle: {
                 backgroundColor: '#188FA7',

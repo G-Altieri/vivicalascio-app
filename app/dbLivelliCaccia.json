@@ -3,62 +3,30 @@
         "map": {
             "infoBox": "Bravo hai risolto il primo indovinello, ora vai sul secondo luogo"
         },
-        "domanda": "Domanda Livello 1",
+        "domanda": "Se abbiamo sete dove ci rechiamo?",
         "risposta": {
-            "uno": "Risposta 1 Livello 1",
-            "due": "Risposta 2 Livello 1",
-            "tre": "Risposta 3 Livello 1",
-            "quatro": "Risposta 4 Livello 1"
+            "uno": "Al Castello",
+            "due": "Alla Fontana",
+            "tre": "A lu bar",
+            "quatro": "In Chiesa"
         },
         "rispostaEsatta": 2,
         "aiuto": "Aiuto Livello 1"
     },
     {
-        "domanda": "Domanda Livello 2",
+        "domanda": "A chi è dedicata questa Fontana?",
         "risposta": {
-            "uno": "Risposta 1 Livello 2",
-            "due": "Risposta 2 Livello 2",
-            "tre": "Risposta 3 Livello 2",
-            "quatro": "Risposta 4 Livello 2"
+            "uno": "Marco Mengoni",
+            "due": "Diamante Volpe ",
+            "tre": "Lorenzo De Medici",
+            "quatro": "Giovanni Paolo II"
         },
-        "infoTitle": "Descrizione posto 1",
-        "info": "ASDASDASDASDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdkjhfkdshfkjdshfkjdshfkjdshjfkhdskjfhdskjhfkjdshfkjhdkjfhdkjshfkjdshfkjhdskjfhkjzhfkjdshkjaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiikkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkassssssssssssssssssssdsssssssssssssssssssssssssssssssssssssssssssssssddddddddddddddddddddddddddddd",
+        "infoTitle": "Fontana degli Sposi",
+        "info": "La fontana è stata costruita nel 1851 dai residenti di Calascio, fondamentalmente servita per il lavaggio di indumenti e tessuti. si  trova al sottostare di un piccolo edificio storico-culturale cioè il Palazzo Volpe-Sabucchi, risalente ai secc. XVII-XVIII, per la sua architettura, presenza di numerosi affreschi, possiede un innegabile fascino. Tra le varie vicende di cui è protagonista questa residenza signorile risalta quella di due giovani sposi i quali, non avendo eredi, donano l’edificio alle suore della Sacra Famiglia di Bergamo affinché si occupino dei minori. Successivamente l’edificio viene acquistato da privati e diventa un elegante Hotel, conosciuto come Palazzo Diamante. I due sposi sono destinatari di questo Inno: Per le solenni nozze della gentil donzella Maria Sabucchi col nobil giovane Diamante Volpe 25 Settembre 1889; originari, rispettivamente, di Pianella, (provincia di Pescara) e di Calascio.",
         "map": {
-            "infoBox": "Dai che te ne manca uno"
+            "infoBox": "Complimenti hai risolto un altro indovinello"
         },
         "rispostaEsatta": 2,
         "aiuto": "Aiuto Livello 2"
-    },
-    {
-        "domanda": "Domanda Livello 3",
-        "risposta": {
-            "uno": "Risposta 1 Livello 3",
-            "due": "Risposta 2 Livello 3",
-            "tre": "Risposta 3 Livello 3",
-            "quatro": "Risposta 4 Livello 3"
-        },
-        "infoTitle": "Descrizione posto 2",
-        "info": "ASDASDASDASDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdkjhfkdshfkjdshfkjdshfkjdshjfkhdskjfhdskjhfkjdshfkjhdkjfhdkjshfkjdshfkjhdskjfhkjzhfkjdshkjaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiikkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkassssssssssssssssssssdsssssssssssssssssssssssssssssssssssssssssssssssddddddddddddddddddddddddddddd",
-        "map": {
-            "infoBox": "Bravo recati sul ultimo posto"
-        },
-        "rispostaEsatta": 2,
-        "aiuto": "Aiuto Livello 3"
-    },
-    {
-        "domanda": "Domanda Livello Finale",
-        "risposta": {
-            "uno": "Risposta 1 Livello 4",
-            "due": "Risposta 2 Livello 4",
-            "tre": "Risposta 3 Livello 4",
-            "quatro": "Risposta 4 Livello 4"
-        },
-        "infoTitle": "Descrizione posto 3",
-        "info": "ASDASDASDASDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdkjhfkdshfkjdshfkjdshfkjdshjfkhdskjfhdskjhfkjdshfkjhdkjfhdkjshfkjdshfkjhdskjfhkjzhfkjdshkjaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiikkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkassssssssssssssssssssdsssssssssssssssssssssssssssssssssssssssssssssssddddddddddddddddddddddddddddd",
-        "map": {
-            "infoBox": "Complimenti hai finito la caccia"
-        },
-        "rispostaEsatta": 2,
-        "aiuto": "Aiuto Livello 4"
     }
 ]

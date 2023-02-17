@@ -27,7 +27,7 @@ export default class SceltaCacciaScreen extends React.Component {
                     <Box style={styles.containerInfo} >
                         <Heading size="2xl" style={styles.colorTitle1} >Percorso Uno</Heading>
                         <Heading size="lg" style={styles.titleDescrizione} >Descrizione</Heading>
-                        <Text style={{color:'#005f73'}}>Giovanni sgiuodfg fguiodfu gdfugoiduf gu odfugiodf ugiodf gdfiug </Text>
+                        <Text style={{color:'#005f73'}}>Ti porteremo alla scoperta della parte culturale di Rocca Calascio, attraverseremo il borgo tra i palazzi e chiese storiche verso il castello di rocca calascio alla conquista del tesoro. </Text>
                         <Heading size="lg" style={styles.colortitleDifficolta} >Difficolta: 3</Heading>
                         <Box w="90%" maxW="400">
                         <Progress bg="blue.200" marginTop={3} _filledTrack={{

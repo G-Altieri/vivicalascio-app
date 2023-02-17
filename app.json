@@ -1,6 +1,5 @@
 {
   "expo": {
-    
     "name": "vivicalascio-app",
     "slug": "vivicalascio-app",
     "version": "1.0.0",
@@ -20,13 +19,21 @@
     ],
     "ios": {
       "userInterfaceStyle": "light",
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "googleMapsApiKey": "AIzaSyCOzL_HRsnaSSM0xcRmHslRoX8nYR24y-s"
+      }
     },
     "android": {
       "userInterfaceStyle": "light",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCOzL_HRsnaSSM0xcRmHslRoX8nYR24y-s"
+        }
       },
       "package": "com.bronz.vivicalascioapp"
     },

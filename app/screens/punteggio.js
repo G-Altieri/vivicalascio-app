@@ -9,8 +9,6 @@ const QRSrc = require('../../assets/qr.png');
 
 
 export default function Punteggio({ route, navigation }) {
-
-
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => (
@@ -33,17 +31,17 @@ export default function Punteggio({ route, navigation }) {
     const boxRisposteEsatte = punteggio.map((domanda, index) => {
 
         return <Box style={[styles.boxRisposteEsatte, domanda.rispostaData == domanda.rispCorretta ? styles.bgCorret : styles.bgError]} key={'hnt' + index}>
-                <View style={styles.containerDomandeRisposte} >
-                    <Text fontSize="lg" fontWeight={500}>    {domanda.domanda}  </Text>
-                    <View style={styles.containerRispostaEsatta} >
-                        <Text fontSize="md" >  {domanda.rispCorretta == 1 ? domanda.risposta1 : domanda.risposta2}   </Text>
-                    </View>
+            <View style={styles.containerDomandeRisposte} >
+                <Text fontSize="lg" fontWeight={500}>{domanda.domanda}</Text>
+                <View style={styles.containerRispostaEsatta} >
+                    <Text fontSize="md" >{domanda.rispCorretta == 1 ? domanda.risposta1 : domanda.risposta2}   </Text>
                 </View>
-                <View style={styles.containerPunteggioDomande} >
-                    <Text fontSize="2xl" fontWeight={500}> {domanda.rispostaData == domanda.rispCorretta ? 1 : 0} pt </Text>
-                </View>
-            </Box>
-     
+            </View>
+            <View style={styles.containerPunteggioDomande} >
+                <Text fontSize="2xl" fontWeight={500}>{domanda.rispostaData == domanda.rispCorretta ? 1 : 0} pt </Text>
+            </View>
+        </Box>
+
 
     })
     return (<>
@@ -57,7 +55,7 @@ export default function Punteggio({ route, navigation }) {
                     Totale Punti: {tot}
                 </Heading>
                 <Heading size="lg" ml="5" my={2} fontWeight={400} marginTop={0}>
-                    Con questo Punteggio, hai vinto un buono sconto, da usare in un locale del borgo !!!
+                    Con questo Punteggio, hai vinto un buono scontodi 25€, da "Trattoria da Maria", con una spesa minima di 50€
                 </Heading>
                 <Heading size="md" ml="5" my={2} fontWeight={400} marginTop={0}>
                     Mostra il seguente QR per otterene acceddere allo sconto
@@ -92,22 +90,25 @@ const styles = StyleSheet.create({
     },
     boxRisposteEsatte: {
         padding: 10,
-        backgroundColor: '#8ecae6',
+        //    backgroundColor: '#8ecae6',
         marginHorizontal: 10,
         borderRadius: 15,
         marginBottom: 10,
-        flexDirection: 'row',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         justifyContent: 'space-between',
+        flexDirection: 'column',
 
     }, containerRispostaEsatta: {
-
         marginLeft: 10,
+        //        flex:1,
         marginVertical: 10,
+        //  backgroundColor: 'pink',
     }, containerDomandeRisposte: {
 
     }, containerPunteggioDomande: {
+        alignSelf: 'flex-end',
         marginRight: 20,
+        //   backgroundColor: 'green',
     }, bgError: {
         backgroundColor: '#ffadad',
     },

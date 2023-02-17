@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, Text, View, Dimensions, Alert, ImageBackground, TouchableOpacity, SafeAreaView } from 'react-native';
 import { NativeBaseProvider, AlertDialog, Box, Center, Button, Image } from "native-base";
-import MapView, { Marker } from 'react-native-maps'
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps'
 
 const iconStartMarkerSrc = require('../../assets/startMarker.png');
 const iconMarkerSrc = require('../../assets/marker.png');
@@ -72,7 +72,7 @@ const Maps = ({ route, navigation }) => {
     //Recupero Paramatri dalla route
     const { markerRender } = route.params;
     const { infoBoxContent } = route.params;
-    const infoButton = markerRender == 4 ? 'Caccia Terminata' : 'Passa al indovinello'
+    const infoButton = markerRender == 2 ? 'Caccia Terminata' : 'Passa al indovinello'
 
     //Render Box Info
     const boxInfoRender = () => {
@@ -90,9 +90,9 @@ const Maps = ({ route, navigation }) => {
     }
 
     const changeViewIndovinello = () => {
-        if (markerRender != 4)
+        if (markerRender != 2)
             navigation.navigate('IndovinelloScreen', { indexLivello: (markerRender + 1) })
-            else
+        else
             navigation.navigate('Quiz')
     }
 
@@ -121,6 +121,7 @@ const Maps = ({ route, navigation }) => {
                 ref={mapRef}
                 initialRegion={calascioRegion}
                 mapType='satellite'
+                provider={PROVIDER_GOOGLE}
             >
                 <Marker
                     coordinate={{

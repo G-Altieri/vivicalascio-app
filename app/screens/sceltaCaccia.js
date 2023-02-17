@@ -29,7 +29,7 @@ export default class SceltaCacciaScreen extends React.Component {
                                 backgroundColor: "gray.50"
                             }}>
                                 <Box>
-                                    <AspectRatio w="100%" ratio={16 / 9}>
+                                    <AspectRatio w="100%" ratio={16 / 7}>
                                         <Image source={{
                                             uri: imageCastelloDueSrc,
                                             cache: 'only-if-cached',
@@ -48,12 +48,12 @@ export default class SceltaCacciaScreen extends React.Component {
                                 <Stack p="4" space={3}>
                                     <Stack space={2}>
                                         <Heading size="md" ml="-1">
-                                            Percorso Uno
+                                            Percorso 1
                                         </Heading>
 
                                     </Stack>
                                     <Text fontWeight="400">
-                                        immergiti per le strade di calascio per trovare quello che hai sempre voluto trovare
+                                    Ti porteremo alla scoperta della parte culturale di Rocca Calascio, attraverseremo il borgo tra i palazzi e chiese storiche verso il castello di rocca calascio alla conquista del tesoro.
                                     </Text>
                                     <HStack alignItems="center" space={4} justifyContent="space-between">
                                         <HStack alignItems="center">
@@ -83,7 +83,7 @@ export default class SceltaCacciaScreen extends React.Component {
                                 backgroundColor: "gray.50"
                             }}>
                                 <Box>
-                                    <AspectRatio w="100%" ratio={16 / 9}>
+                                    <AspectRatio w="100%" ratio={16 / 7}>
                                         <Image source={{
                                             uri: imageCastelloUnoSrc,
                                             cache: 'only-if-cached',
@@ -102,11 +102,11 @@ export default class SceltaCacciaScreen extends React.Component {
                                 <Stack p="4" space={3}>
                                     <Stack space={2}>
                                         <Heading size="md" ml="-1">
-                                            Percorso Due
+                                            Percorso 2
                                         </Heading>
                                     </Stack>
                                     <Text fontWeight="400">
-                                        immergiti per le strade di calascio per trovare quello che hai sempre voluto trovare
+                                    Ti porteremo alla scoperta della parte avventurosa di Rocca Calascio, attraverseremo il borgo diretti verso l’antica rocca passando per il borgo antico e per i suoi ruderi
                                     </Text>
                                     <HStack alignItems="center" space={4} justifyContent="space-between">
                                         <HStack alignItems="center">
